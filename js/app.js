@@ -24,16 +24,16 @@ $(document).ready( function() {
 		{
 			var outputString = index;
 			if (index % 3 ==0) {
-				outputString = "fizz";
+				outputString = "Fizz";
 			}
 
 			if (index % 5 == 0) {
 				if (outputString == index) {
-					outputString = "buzz";
+					outputString = "Buzz";
 				}
 				else // fizz is in there
 				{
-					outputString += " " + "buzz";
+					outputString += " " + "Buzz";
 				}
 				
 			}
