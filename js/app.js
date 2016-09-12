@@ -4,8 +4,8 @@ $(document).ready( function() {
 
 	// if user input is valid, global variable endNumber is updated
 	function validPositiveInt(num) {
-		if (isNaN(num) || (num % 1 != 0) || (num <=0)) {
-			return false;		// Not a Number, or not an int, or not positive
+		if (isNaN(num) || (num % 1 != 0) || (num <=0)  || (num > 100)) {
+			return false;		// Not a Number, or not an int from 1 to 100
 		};
 		endNumber = +num;
 		return true; 	
@@ -19,17 +19,27 @@ $(document).ready( function() {
 		// Loop thru and output fizz and/or buzz based on index value
 		for (index=1; index <= num; index++) {
 			var outputString = index;
+
 			if (index % 3 ==0) {
 				outputString = "Fizz";
-			}
+			};
 			if (index % 5 == 0) {
-				if (outputString == index) {
 					outputString = "Buzz";
-				}
-				else {   // fizz is in there
-					outputString += " " + "Buzz";
-				}
-			}
+			};
+			// my original code:
+			//if (index % 5 == 0) {
+			//	if (outputString == index) {
+			//		outputString = "Buzz";
+			//	}
+			//	else {   // fizz is in there
+			//		outputString += " " + "Buzz";
+			//	}
+			//};
+			//**alternate method - check if evenly divisible by both 3 and 5:
+			if ((index % 3 ==0) && (index % 5 ==0)) {
+				outputString = "Fizz Buzz";
+			};
+
 			$('.output').append ("<p>" + outputString + "</p>");
 		};
 	};
@@ -46,7 +56,7 @@ $(document).ready( function() {
 				outputFizzBuzz(endNumber);
 			}
 			else {
-        		$('.output').append ("<p> " + $('input').val() + " is not a valid positive integer; try again. </p>");
+        		$('.output').append ("<p> " + $('input').val() + " is not a an integer from 1 to 100; try again. </p>");
         };
        
 		// remove the submitted number from the form input
